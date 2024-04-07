@@ -1,0 +1,13 @@
+SELECT DL.consumed_at, SUM(N.value * DL.quantity) AS total_nutrients
+FROM Daily_Log DL
+JOIN Food F ON DL.food_id = F.food_id
+JOIN Nutrient N ON F.food_id = N.food_id
+WHERE DL.user_id = 1
+GROUP BY DL.consumed_at;
+
+
+  consumed_at  | total_nutrients
+---------------------------------
+ 2024-04-01    | 2500
+ 2024-04-02    | 2300
+ 2024-04-03    | 2400
